@@ -1,3 +1,733 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <title>Happy Birthday Ahmad Riefa Busyairi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+        @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+        body {
+            font-family: 'Indie Flower', cursive !important;
+            /* Background gradasi yang lebih menarik */
+            background: linear-gradient(135deg,
+                    #FFE5B4 0%,
+                    #FDE3A7 25%,
+                    #FFCCCB 50%,
+                    #E6E6FA 75%,
+                    #F0E68C 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+            margin: 0px;
+            padding: 0px;
+            min-height: 100vh;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        ::selection {
+            background: transparent;
+        }
+
+        h4 {
+            font-size: 26px;
+            line-height: 1px;
+            font-family: 'Amatic SC', cursive !important;
+        }
+
+        .color1 {
+            color: #1BBC9B
+        }
+
+        .color2 {
+            color: #C0392B
+        }
+
+        .card {
+            color: #013243;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 400px;
+            background: #e0e1dc;
+            transform-style: preserve-3d;
+            transform: translate(-50%, -50%) perspective(2000px);
+            box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+            transition: 1s;
+        }
+
+        .card:hover {
+            transform: translate(-50%, -50%) perspective(2000px) rotate(15deg) scale(1.2);
+            box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5), 0 10px 100px rgba(0, 0, 0, .5);
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #BAC1BA;
+            transform-origin: bottom;
+            transform: skewX(-45deg);
+        }
+
+        .card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 5px;
+            height: 100%;
+            background: #92A29C;
+            transform-origin: left;
+            transform: skewY(-45deg);
+        }
+
+        .card .imgBox {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-origin: left;
+            transition: .7s;
+        }
+
+        .card .bark {
+            position: absolute;
+            background: #e0e1dc;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: .7s;
+        }
+
+        .card .imgBox img {
+            min-width: 250px;
+            max-height: 400px;
+        }
+
+        .card:hover .imgBox {
+            transform: rotateY(-135deg);
+        }
+
+        .card:hover .bark {
+            opacity: 1;
+            transition: .6s;
+            box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+        }
+
+        .card .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 0 0 0 10px;
+            z-index: -1;
+            margin-top: 70px;
+        }
+
+        .card .details p {
+            font-size: 15px;
+            line-height: 5px;
+            transform: rotate(-10deg);
+            padding: 0 0 0 20px;
+        }
+
+        .card .details h4 {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .music-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(224, 225, 220, 0.9);
+            border-radius: 50px;
+            padding: 10px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Indie Flower', cursive;
+            z-index: 1000;
+            border: 2px solid #BAC1BA;
+        }
+
+        .music-btn {
+            background: #1BBC9B;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            background: #C0392B;
+            transform: scale(1.1);
+        }
+
+        .music-info {
+            font-size: 12px;
+            color: #013243;
+            max-width: 120px;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-slider {
+            width: 50px;
+            height: 3px;
+            background: #BAC1BA;
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Music note animation untuk efek visual */
+        .music-note {
+            position: absolute;
+            font-size: 16px;
+            color: #1BBC9B;
+            opacity: 0;
+            animation: float-note 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float-note {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-40px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Subtle background music visualization */
+        .music-playing .card {
+            animation: subtle-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes subtle-pulse {
+
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.05);
+            }
+        }
+
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #FFE5B4, #FDE3A7);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid #1BBC9B;
+            font-family: 'Amatic SC', cursive;
+            max-width: 400px;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-content h2 {
+            color: #C0392B;
+            font-size: 32px;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-content p {
+            color: #013243;
+            font-size: 18px;
+            margin: 15px 0;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        .popup-btn {
+            background: #1BBC9B;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-family: 'Amatic SC', cursive;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(27, 188, 155, 0.3);
+        }
+
+        .popup-btn:hover {
+            background: #C0392B;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+        }
+
+        /* Cake emoji animation */
+        .cake-emoji {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 1500;
+            animation: cake-float 2s ease-out forwards;
+        }
+
+        @keyframes cake-float {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(0.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-30px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Audio Loading Indicator */
+        .audio-status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(224, 225, 220, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #013243;
+            border: 1px solid #BAC1BA;
+            z-index: 1000;
+        }
+
+        .loading {
+            color: #C0392B;
+        }
+
+        .ready {
+            color: #1BBC9B;
+        }
+
+        .error {
+            color: #C0392B;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="imgBox">
+            <div class="bark"></div>
+            <img src="https://image.ibb.co/fYzTrb/lastofus.jpg">
+        </div>
+        <div class="details">
+            <h4 class="color1">You're not Fossil! (YET)</h4>
+            <h4 class="color2">(Happy Birthday My lovely Man)</h4>
+            <p> Hai Mpa,</p>
+            <p> Aku tebak... </p>
+            <p> Today, is your 20's Day, right?</p>
+
+            <p> Yeay, ini kali ke-20 kamu menjadi </p>
+            <p> THE BEST MPA. Aku berharap semua </p>
+            <p> hal-hal baik yang kamu dambakan itu </p>
+            <p> segera Allah kabulkan, aamiin... </p>
+
+            <p> Hiduplah dengan Bahagia :)</p>
+            <p class="text-right"> Ayo kita pergi makan, Mpa! </p>
+            <p class="text-right"> Cica </p>
+        </div>
+    </div>
+    </div>
+    <!-- Popup Birthday Greeting -->
+    <div class="popup-overlay" id="birthdayPopup">
+        <div class="popup-content">
+            <h2>🎉 Selamat Ulang Tahun! 🎉</h2>
+            <p>Semoga hari istimewa ini penuh dengan kebahagiaan dan berkah!</p>
+            <p>Happy Birthday Ahmad Riefa Busyairi!</p>
+            <button class="popup-btn" onclick="closePopup()"> Bye! </button>
+        </div>
+    </div>
+
+    <div class="music-controls">
+        <button class="music-btn" id="playBtn">▶</button>
+        <div class="music-info">
+            <div style="font-weight: bold; font-size: 11px;">♪ Birthday Song</div>
+            <div style="opacity: 0.7; font-size: 10px;">Sal Priadi</div>
+        </div>
+        <div class="volume-control">
+            <span style="font-size: 12px;">🔊</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="60">
+        </div>
+    </div>
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="birthdayAudio" loop preload="auto" controls style="display: none;">
+        <source src="SERTA MULIA.mp3" type="audio/mpeg">
+        <source src="SERTA MULIA.mp4" type="audio/mp4">
+        <source src="https://www.soundjay.com/misc/sounds-1015.mp3" type="audio/mpeg">
+        <source src="https://file-examples.com/storage/fe68c6fa4bb9613b1ab4146/2017/11/file_example_MP3_700KB.mp3"
+            type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music notes untuk efek visual -->
+    <div class="music-note" style="top: 20%; left: 15%; animation-delay: 1s;">♪</div>
+    <div class="music-note" style="top: 30%; right: 20%; animation-delay: 2s;">♫</div>
+    <div class="music-note" style="top: 70%; left: 80%; animation-delay: 3s;">♪</div>
+
+    <script>
+        // JAVASCRIPT UNTUK KONTROL MUSIK
+        class SimpleMusicPlayer {
+            constructor() {
+                this.audio = document.getElementById('birthdayAudio');
+                this.playBtn = document.getElementById('playBtn');
+                this.volumeSlider = document.getElementById('volumeSlider');
+                this.isPlaying = false;
+
+                this.initPlayer();
+            }
+
+            initPlayer() {
+                // Set volume awal
+                this.audio.volume = 0.6;
+
+                // Event listeners
+                this.playBtn.addEventListener('click', () => this.togglePlay());
+                this.volumeSlider.addEventListener('input', (e) => {
+                    this.audio.volume = e.target.value / 100;
+                });
+
+                // Audio events
+                this.audio.addEventListener('play', () => {
+                    this.playBtn.innerHTML = '⏸';
+                    document.body.classList.add('music-playing');
+                    this.startMusicNotes();
+                });
+
+                this.audio.addEventListener('pause', () => {
+                    this.playBtn.innerHTML = '▶';
+                    document.body.classList.remove('music-playing');
+                    this.stopMusicNotes();
+                });
+
+                this.audio.addEventListener('error', (e) => {
+                    console.log('Audio error:', e);
+                    console.log('Current src:', this.audio.currentSrc);
+                    this.playBtn.innerHTML = '❌';
+                    this.showAudioStatus('Audio gagal dimuat', 'error');
+                });
+
+                this.audio.addEventListener('canplay', () => {
+                    console.log('Audio ready to play');
+                    this.showAudioStatus('Audio siap diputar!', 'ready');
+                });
+
+                this.audio.addEventListener('loadstart', () => {
+                    console.log('Loading audio...');
+                    this.showAudioStatus('Memuat audio...', 'loading');
+                });
+
+                this.audio.addEventListener('loadeddata', () => {
+                    console.log('Audio data loaded');
+                });
+
+                this.audio.addEventListener('canplaythrough', () => {
+                    console.log('Audio can play through');
+                });
+
+                // Auto-play setelah 2 detik
+                setTimeout(() => {
+                    this.tryAutoPlay();
+                }, 2000);
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.isPlaying = false;
+                } else {
+                    console.log('Trying to play audio...');
+                    const playPromise = this.audio.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            this.isPlaying = true;
+                            console.log('Audio playing successfully');
+                        }).catch(e => {
+                            console.log('Gagal memutar audio:', e);
+                            this.showAudioStatus('Klik untuk memutar musik', 'error');
+
+                            // Try to load alternative source
+                            this.tryAlternativeSource();
+                        });
+                    }
+                }
+            }
+
+            tryAlternativeSource() {
+                // If main source fails, try with a public audio file
+                const fallbackUrl = 'https://www.soundjay.com/misc/sounds-1015.mp3';
+                this.audio.src = fallbackUrl;
+                this.audio.load();
+
+                setTimeout(() => {
+                    this.audio.play().catch(() => {
+                        this.showAudioStatus('Gunakan musik latar belakang browser', 'error');
+                    });
+                }, 1000);
+            }
+
+            tryAutoPlay() {
+                // Coba autoplay, jika gagal biarkan user yang klik
+                this.audio.play().then(() => {
+                    this.isPlaying = true;
+                }).catch(() => {
+                    // Autoplay diblokir browser, tidak apa-apa
+                    console.log('Autoplay diblokir, user harus klik play');
+                });
+            }
+
+            startMusicNotes() {
+                const notes = document.querySelectorAll('.music-note');
+                notes.forEach(note => {
+                    note.style.animationPlayState = 'running';
+                });
+            }
+
+            stopMusicNotes() {
+                const notes = document.querySelectorAll('.music-note');
+                notes.forEach(note => {
+                    note.style.animationPlayState = 'paused';
+                });
+            }
+
+            showAudioStatus(message, type) {
+                // Remove existing status
+                const existingStatus = document.querySelector('.audio-status');
+                if (existingStatus) {
+                    existingStatus.remove();
+                }
+
+                // Create new status
+                const status = document.createElement('div');
+                status.className = `audio-status ${type}`;
+                status.textContent = message;
+                document.body.appendChild(status);
+
+                // Auto remove after 3 seconds
+                setTimeout(() => {
+                    if (document.body.contains(status)) {
+                        document.body.removeChild(status);
+                    }
+                }, 3000);
+            }
+        }
+
+        // Inisialisasi player ketika halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            new SimpleMusicPlayer();
+        });
+
+        // Tambahan: Click effect sederhana
+        document.addEventListener('click', (e) => {
+            // Buat efek sparkle kecil saat klik
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.cssText = `
+                position: fixed;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                font-size: 12px;
+                pointer-events: none;
+                z-index: 9999;
+                animation: sparkle 1s ease-out forwards;
+            `;
+
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                document.body.removeChild(sparkle);
+            }, 1000);
+        });
+
+        // CSS animation untuk sparkle effect
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% {
+                    transform: translateY(0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-30px) scale(0.5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // POPUP FUNCTIONALITY
+        function showBirthdayPopup() {
+            const popup = document.getElementById('birthdayPopup');
+            popup.classList.add('show');
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('birthdayPopup');
+            popup.classList.remove('show');
+        }
+
+        // CAKE EMOJI EFFECT
+        function createCakeEmoji(x, y) {
+            const cakeEmojis = ['🎂', '🧁', '🍰', '🎂', '🧁'];
+            const randomCake = cakeEmojis[Math.floor(Math.random() * cakeEmojis.length)];
+
+            const cake = document.createElement('div');
+            cake.innerHTML = randomCake;
+            cake.className = 'cake-emoji';
+            cake.style.left = x + 'px';
+            cake.style.top = y + 'px';
+
+            document.body.appendChild(cake);
+
+            setTimeout(() => {
+                if (document.body.contains(cake)) {
+                    document.body.removeChild(cake);
+                }
+            }, 2000);
+        }
+
+        // Inisialisasi ketika halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            new SimpleMusicPlayer();
+
+            // Show popup after 2 seconds
+            setTimeout(() => {
+                showBirthdayPopup();
+            }, 2000);
+        });
+
+        // Enhanced click effect dengan cake emoji
+        document.addEventListener('click', (e) => {
+            // Buat efek sparkle kecil saat klik
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.cssText = `
+                position: fixed;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                font-size: 12px;
+                pointer-events: none;
+                z-index: 9999;
+                animation: sparkle 1s ease-out forwards;
+            `;
+
+            document.body.appendChild(sparkle);
+
+            // Tambahkan cake emoji effect
+            createCakeEmoji(e.clientX - 15, e.clientY - 15);
+
+            setTimeout(() => {
+                if (document.body.contains(sparkle)) {
+                    document.body.removeChild(sparkle);
+                }
+            }, 1000);
+        });
+
+        // Close popup when clicking outside
+        document.getElementById('birthdayPopup').addEventListener('click', (e) => {
+            if (e.target.classList.contains('popup-overlay')) {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
 html {
   height: 100%;
   width: 100%;
